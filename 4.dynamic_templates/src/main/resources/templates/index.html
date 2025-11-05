@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Variable Example</h1>
+   <h3>I am <span th:text="${name}"></span>. My heroic name is <span th:text="${heroic_name}"></span></h3>
+
+   <h4>===========================================================================</h4>
+   
+   <h1>IF Condition Example</h1>
+   <h3 th:if="${isHero}">He is Hero.</h3>
+
+   <h4>===========================================================================</h4>
+   
+   <h1>IF Else Condition Example</h1>
+   <h3 th:if="${isHero}">He is Hero.</h3>
+   <h3 th:unless="${isHero}">He is a Villian.</h3>
+   
+   <h4>===========================================================================</h4>
+   
+   <h1>Switch Condition Example</h1>
+   <div th:switch="${herotype}">
+       <h3 th:case="'avenger'">They Fight For Justice.</h3>
+       <h3 th:case="'guardian'">They Protect Our Galaxy.</h3>
+       <h3 th:case="'villian'">Destroy Everythin which is good.</h3>
+       <h3 th:case="*">Unknown Hero Type.</h3>
+       
+    </div>
+    
+    <h4>===========================================================================</h4>
+       
+    <h1>Loop Example</h1>
+    <h3 th:each="a:${aven}" th:text="${a}"></h3>
+</body>
+</html>
