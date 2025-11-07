@@ -1,0 +1,7 @@
+<dependency>
+    <groupId>nz.net.ultraq.thymeleaf</groupId>
+    <artifactId>thymeleaf-layout-dialect</artifactId>
+</dependency>
+
+
+This dependency we have to add in pom.xml to work with template inheritance.

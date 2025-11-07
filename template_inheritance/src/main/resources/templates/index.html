@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{base}">
+
+
+    <div layout:fragment="content">
+        <h4>THis is Index written in index.html</h4>
+
+        <div th:insert="carousel :: carousel"></div>
+
+        <img src="images/nature.jpg" alt="">
+    </div>
+
+    
+</html>
