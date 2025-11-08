@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="image_card">
+
+  <div class="container mt-5">
+    <h1>Pet Categories</h1>
+  </div>
+
+  <div class="container mt-4">
+    <div class="card-deck">
+
+      <!-- Dog Card -->
+      <a th:href="@{/dogs}" class="card-img-href" style="text-decoration: none;">
+        <div class="card ml-5 mt-5 mb-5" style="width: 18rem;">
+          <img th:src="@{/images/dog/card_dog.jpg}" class="card-img-top" alt="Dog">
+          <div class="card-body">
+            <p class="card-text">
+              Dogs are loyal, domesticated mammals known for companionship.
+            </p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Cat Card -->
+      <a th:href="@{/cats}" class="card-img-href" style="text-decoration: none;">
+        <div class="card ml-5 mt-5" style="width: 18rem;">
+          <img th:src="@{/images/cat/cat_card.jpg}" class="card-img-top" alt="Cat">
+          <div class="card-body">
+            <p class="card-text">
+              Cats are cherished companions known for their independence, agility, and affectionate behavior.
+            </p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Bird Card -->
+      <a th:href="@{/birds}" class="card-img-href" style="text-decoration: none;">
+        <div class="card ml-5 mt-5 mr-5" style="width: 18rem;">
+          <img th:src="@{/images/bird/bird_card.jpg}" class="card-img-top" alt="Bird">
+          <div class="card-body">
+            <p class="card-text">
+              Birds are highly diverse with remarkable adaptations for various environments.
+            </p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

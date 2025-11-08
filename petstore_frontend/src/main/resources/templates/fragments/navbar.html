@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<body>
+
+<nav th:fragment="navbar" class="navbar navbar-expand-lg fixed-top" style="background-color: rgb(245, 229, 10);">
+  <a class="navbar-brand" th:href="@{/}">Petstore</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+    <!-- Left-side navigation -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/about}">About<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/contact}">Contact</a>
+      </li>
+
+      <!-- Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
+          <a class="dropdown-item" th:href="@{/dogs}">Dog</a>
+          <a class="dropdown-item" th:href="@{/cats}">Cat</a>
+          <a class="dropdown-item" th:href="@{/birds}">Bird</a>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Search bar -->
+    <form class="form-inline my-lg-0 mr-auto">
+      <input class="form-control custom-search-bar mr-2" type="search" placeholder="Search" aria-label="Search" style="width:500px;">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <!-- Right-side navigation -->
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/profile}">Profile<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/register}">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/login}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/logout}">Logout</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+</body>
+</html>

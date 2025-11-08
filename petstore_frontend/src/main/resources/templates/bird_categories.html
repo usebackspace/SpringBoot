@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title>Bird Categories</title>
+</head>
+
+<body>
+
+<section layout:fragment="content">
+
+    <!-- Cat Card -->
+    <div class="container mt-5">
+        <div class="row">
+
+            <!-- Example Cat Card 1 -->
+            <div class="col-sm-4">
+                <a th:href="@{/pet-details}" style="text-decoration: none;">
+                    <div class="card cat_categories_card cat_card" style="width: 18rem; height:20rem">
+                        <img class="card-img-top" th:src="@{/images/bird/Sunbird.jpg}" alt="Persian Cat">
+                        <div class="card-body">
+                            <h5 class="card-title">Sunbird</h5>
+                            <div class="text-center">
+                                <h5 class="font-weight-bold text-dark">
+                                    <i class="fa-solid fa-indian-rupee-sign"></i>12999
+                                    <small class="fw-light rupee">14999</small>
+                                    <small class="text-danger">(13% off)</small>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- Additional cat cards follow same structure -->
+            <!-- Add more <div class="col-sm-4">...</div> blocks for other breeds -->
+
+        </div>
+    </div>
+    <!-- End Cat Card -->
+
+</section>
+
+</body>
+</html>

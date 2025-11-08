@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petstore</title>
+
+    <!-- Static CSS -->
+    <link th:href="@{/css/fontawesome.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet" th:fragment="style">
+</head>
+<body>
+
+    <!-- Navbar Include -->
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <!-- Dynamic content section -->
+    <main layout:fragment="content">
+        <!-- Default content if not overridden -->
+        <h1>Welcome to Petstore</h1>
+    </main>
+
+    <!-- Footer Include -->
+    <div th:replace="fragments/footer :: footer"></div>
+
+    <!-- JS -->
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/popper.js}"></script>
+    <script th:src="@{/js/fontawesome.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
