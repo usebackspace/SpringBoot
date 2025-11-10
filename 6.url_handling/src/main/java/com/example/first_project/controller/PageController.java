@@ -18,9 +18,11 @@ public class PageController {
     // public String product(Model model){
     //     model.addAttribute("product_id", 100);
     //     return "product";
+    // }
 
     @GetMapping("/product/{id}")
     public String product(@PathVariable int id, Model model){
+        System.out.println("Product ID: " + id);
         model.addAttribute("product_id", id);
         return "product";
     }

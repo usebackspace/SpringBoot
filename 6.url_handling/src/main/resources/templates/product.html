@@ -9,5 +9,7 @@
     <h1>This is product page</h1>
 
     <h3>Product Id : <span th:text="${product_id}"></span></h3>
+    
+    <a th:href="@{/product/{id}(id=${product_id})}"><h2>Sending Product Id</h2></a>
 </body>
 </html>
