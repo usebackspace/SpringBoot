@@ -1,0 +1,16 @@
+1. Create Database:
+
+   CREATE DATABASE avengers_spring;
+   use avengers_spring;
+
+
+2. Configure Database in application.properties:
+    
+    spring.datasource.url=jdbc:mysql://localhost:3306/avengers_spring
+    spring.datasource.username=root
+    spring.datasource.password=root
+
+    # JPA settings
+    spring.jpa.hibernate.ddl-auto=update
+    spring.jpa.show-sql=true
+    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect

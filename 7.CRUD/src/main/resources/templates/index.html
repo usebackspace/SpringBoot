@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="head">
+            <h1>Avenger Database</h1>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <form th:action="@{/addAvenger}" method="post" th:object="${avenger}">
+                    Name: <input type="text" th:field="*{name}"> <br><br>
+                    Heroic Name: <input type="text" th:field="*{heroic_name}"> <br><br>
+                    <input type="submit" name="" id="" value="Add Avenger">
+                </form>
+            </div>
+            <div class="col-8">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name </th>
+                            <th scope="col">Heroic Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="a : ${avengers}">
+                            <th scope="row" th:text="${a.id}">1</th>
+                            <td th:text="${a.name}">Mark</td>
+                            <td th:text="${a.heroic_name}">Otto</td>
+                            <td>
+                              <a th:href="@{/update/{id}(id=${a.id})}"> <button class="btn btn-warning">Update</button></a> 
+                              <a th:href="@{/delete/{id}(id=${a.id})}">  <button class="btn btn-danger">Delete</button></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
