@@ -1,0 +1,7 @@
+In this project:
+
+1. We create model and repository.
+
+2. enum file for dropdown
+
+3. We will create admin folder inside templates foler to handle all the admin request

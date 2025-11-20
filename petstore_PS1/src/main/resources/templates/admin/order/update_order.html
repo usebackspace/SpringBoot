@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Update Order</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div class="container mt-4">
+    <div class="head">
+        <h1>Update Order</h1>
+    </div>
+
+    <!-- Form to update an existing order -->
+    <form th:action="@{/admin/orders/update}" method="post" th:object="${order}">
+        <!-- Hidden input for the order ID -->
+        <input type="hidden" th:field="*{id}">
+
+        <div class="mb-3">
+            <label for="pet" class="form-label">Pet</label>
+            <select class="form-select" id="pet" th:field="*{pet.id}" required>
+                <option th:each="p : ${pets}" th:value="${p.id}" th:text="${p.name}"></option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <select class="form-select" id="address" th:field="*{address.id}" required>
+                <option th:each="a : ${addresses}" th:value="${a.id}" th:text="${a.name + ', ' + a.city}"></option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" class="form-control" id="quantity" th:field="*{quantity}" placeholder="Enter quantity" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="totalPrice" class="form-label">Total Price</label>
+            <input type="number" class="form-control" id="totalPrice" th:field="*{totalPrice}" placeholder="Enter total price" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Order</button>
+        <a href="#" th:href="@{/admin/orders}" class="btn btn-secondary ms-3">Cancel</a>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
