@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title>Contact</title>
+</head>
+
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container contact">
+        <div class="heading_contact">
+            <h1>Contact Us</h1>
+        </div>
+
+        <div class="contact_info">
+            <p>If you have any questions or need assistance, feel free to reach out to us.</p>
+            <ul>
+                <li><strong>Address:</strong> 123 Pet Street, Pet City, Country</li>
+                <li><strong>Phone:</strong> +123-456-7890</li>
+                <li><strong>Email:</strong> support@petstore.com</li>
+            </ul>
+        </div>
+
+        <div class="contact_form">
+            <h2>Send us a message</h2>
+            <form th:action="@{/contact}" method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add New Address</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container mt-4">
+        <div class="head">
+            <h1>Add New Address</h1>
+        </div>
+
+        <!-- Form to add a new address -->
+        <form th:action="@{/admin/addresses/add}" method="post" th:object="${address}">
+
+            <div class="mb-3">
+                <label for="user" class="form-label">User</label>
+                <select class="form-select" th:field="*{user.id}" id="user" required>
+                    <option th:each="u : ${users}" th:value="${u.id}" th:text="${u.username}"></option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Enter name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="area" class="form-label">Area</label>
+                <input type="text" class="form-control" id="area" th:field="*{area}" placeholder="Enter area" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" th:field="*{city}" placeholder="Enter city" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="state" class="form-label">State</label>
+                <select class="form-select" id="state" th:field="*{state}" required>
+                    <option th:each="s : ${T(com.example.petstore.model.enums.State).values()}" th:value="${s}"
+                        th:text="${s}">Select State</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="pincode" class="form-label">Pincode</label>
+                <input type="number" class="form-control" id="pincode" th:field="*{pincode}" placeholder="Enter pincode"
+                    required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Address</button>
+            <a th:href="@{/admin/addresses}" class="btn btn-secondary ms-3">Cancel</a>
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

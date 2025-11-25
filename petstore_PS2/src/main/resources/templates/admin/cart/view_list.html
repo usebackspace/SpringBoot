@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart Items</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Cart Items</h1>
+
+    <a th:href="@{/admin/cart/add}" class="btn btn-primary mb-3">Add to Cart</a>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>User</th>
+            <th>Pet</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${cartItems}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.user.username}"></td>
+            <td th:text="${item.product.name}"></td>
+            <td th:text="${item.quantity}"></td>
+            <td>
+                <a th:href="@{/cart/delete/{id}(id=${item.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

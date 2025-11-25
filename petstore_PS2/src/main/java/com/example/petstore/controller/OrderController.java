@@ -3,7 +3,6 @@ package com.example.petstore.controller;
 import com.example.petstore.model.Order;
 import com.example.petstore.repository.OrderRepository;
 import com.example.petstore.repository.PetRepository;
-import com.example.petstore.repository.UserRepository;
 import com.example.petstore.repository.AddressRepository;
 
 import org.springframework.stereotype.Controller;
@@ -17,13 +16,11 @@ public class OrderController {
     private final OrderRepository orderRepository;
     private final PetRepository petRepository;
     private final AddressRepository addressRepository;
-    private final UserRepository userRepository;
 
-    public OrderController(OrderRepository orderRepository, PetRepository petRepository, AddressRepository addressRepository, UserRepository userRepository) {
+    public OrderController(OrderRepository orderRepository, PetRepository petRepository, AddressRepository addressRepository) {
         this.orderRepository = orderRepository;
         this.petRepository = petRepository;
         this.addressRepository = addressRepository;
-        this.userRepository = userRepository;
     }
 
     @GetMapping
@@ -36,8 +33,7 @@ public class OrderController {
     public String addOrderForm(Model model) {
         model.addAttribute("order", new Order());  
         model.addAttribute("pets", petRepository.findAll()); 
-        model.addAttribute("addresses", addressRepository.findAll());
-        model.addAttribute("users", userRepository.findAll());  
+        model.addAttribute("addresses", addressRepository.findAll()); 
         return "admin/order/add_order";  
     }
 
