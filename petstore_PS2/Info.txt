@@ -1,3 +1,0 @@
-In this project:
-
-1. We will work on authentication.
