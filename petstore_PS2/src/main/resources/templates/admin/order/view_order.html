@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid mt-3">
+    <div class="head">
+        <h1>Order Management</h1>
+        <a th:href="@{/admin/orders/add}" class="btn btn-primary mb-3">Add New Order</a>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Pet</th>
+                    <th>Customer Name</th>
+                    <th>Address</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order : ${orders}">
+                    <th th:text="${order.id}">1</th>
+                    
+                    <!-- Pet Name -->
+                    <td th:text="${order.pet != null ? order.pet.name : 'N/A'}">Pet Name</td>
+                    
+                    <!-- Customer Name -->
+                    <td th:text="${order.address != null ? order.address.fullName : 'N/A'}">Customer</td>
+                    
+                    <!-- Address -->
+                    <td th:text="${order.address != null ? order.address.fullAddress : 'N/A'}">Address</td>
+                    
+                    <!-- Quantity -->
+                    <td th:text="${order.quantity}">1</td>
+                    
+                    <!-- Total Price -->
+                    <td th:text="${order.quantity * (order.pet != null ? order.pet.discountedPrice : 0)}">0</td>
+                    
+                    <!-- Actions -->
+                    <td>
+                        <a th:href="@{/admin/orders/update/{id}(id=${order.id})}">
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                        </a>
+                        <a th:href="@{/admin/orders/delete/{id}(id=${order.id})}">
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                        </a>
+                    </td>
+                </tr>
+                <tr th:if="${orders.isEmpty()}">
+                    <td colspan="7" class="text-center">No orders found</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

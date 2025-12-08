@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/admin}">
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container mt-4">
+        <div class="head">
+            <h1>Add New Pet</h1>
+        </div>
+
+        <form th:action="@{/admin/pets/add}" method="post" th:object="${pet}" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" th:field="*{name}" placeholder="Enter pet name" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Category</label>
+                <select class="form-select" th:field="*{category}" required>
+                    <option value="">-- Select Category --</option>
+                    <option th:each="cat : ${categories}" th:value="${cat}" th:text="${cat}"></option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Short Description</label>
+                <input type="text" class="form-control" th:field="*{smallDescription}" placeholder="Short description">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" rows="4" th:field="*{description}" placeholder="Enter full description"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Selling Price</label>
+                <input type="number" class="form-control" th:field="*{sellingPrice}" placeholder="Enter selling price" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Discounted Price</label>
+                <input type="number" class="form-control" th:field="*{discountedPrice}" placeholder="Enter discounted price">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Pet Image</label>
+                <input type="file" class="form-control" name="imageFile">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Pet</button>
+            <a th:href="@{/admin/pets}" class="btn btn-secondary ms-3">Cancel</a>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title>Register</title>
+</head>
+
+<body>
+
+<main layout:fragment="content">
+
+    <div class="register-wrapper">
+
+        <div class="register-card">
+
+            <h2 class="register-title">Register</h2>
+
+            <!-- Success -->
+            <div th:if="${param.success}" class="alert alert-success">
+                Account created successfully! Please log in.
+            </div>
+
+            <!-- Error -->
+            <div th:if="${param.error}" class="alert alert-danger">
+                Registration failed. Please try again.
+            </div>
+
+            <form th:action="@{/register}" method="post">
+
+                <div class="mb-3">
+                    <label class="form-label"><b>Username</b></label>
+                    <input type="text" name="username" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label"><b>Password</b></label>
+                    <input type="password" name="password" class="form-control" required />
+                </div>
+
+                <button type="submit" style="width: 50%; margin-left:30%">Create Account</button>
+            </form>
+
+            <div class="login-link">
+                <a th:href="@{/login}">Already have an account? Login</a>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>

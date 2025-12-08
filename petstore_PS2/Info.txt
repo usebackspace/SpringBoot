@@ -1,0 +1,56 @@
+In this project:
+
+1. We will add security.
+
+2. Add Unique Constraint to username through SQL. 
+
+3. We will remove EMAIL field and add ROLE field in user templates IN view_user.html
+
+3.1 Add dialect dependency
+<dependency>
+    <groupId>nz.net.ultraq.thymeleaf</groupId>
+    <artifactId>thymeleaf-layout-dialect</artifactId>
+</dependency>
+
+4. we will add drop down menu for the USER and ADMIN
+<div class="mb-3">
+    <label for="role" class="form-label">Role</label>
+    <select id="role" class="form-control" th:field="*{role}">
+        <option value="USER">USER</option>
+        <option value="ADMIN">ADMIN</option>
+    </select>
+</div>
+
+5. We will add PasswordEncoder
+
+private final UserRepository userRepository;
+private final PasswordEncoder passwordEncoder;
+
+public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    this.userRepository = userRepository;
+    this.passwordEncoder = passwordEncoder;
+}
+
+@PostMapping("/add")
+public String addUser(@ModelAttribute User user) {
+
+
+    // Encrypt password before saving
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+    userRepository.save(user);
+    return "redirect:/admin/users";
+}
+
+6.	 we will add this in WebSecurityConfig to redirect to home page after successfull login .defaultSuccessUrl("/", true)  
+    .formLogin((form) -> form
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/", true)   // go to home after login 
+                    .permitAll()
+                )
+
+7. we will add this in WebSecurityConfig to redirect to home page after successfull logout.logoutSuccessUrl("/")
+
+    .logout((logout) -> logout
+                .logoutSuccessUrl("/")   // redirect to home page
+                .permitAll());

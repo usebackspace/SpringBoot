@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/admin}">
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container mt-4">
+        <h2>Add Cart Item</h2>
+
+        <form th:action="@{/admin/cart/add}" th:object="${cart}" method="post">
+            <div class="mb-3">
+                <label>User</label>
+                <select th:field="*{user.id}" class="form-select">
+                    <option value="" disabled selected>Select user</option>
+                    <option th:each="user : ${users}"
+                            th:value="${user.id}"
+                            th:text="${user.username}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Pet</label>
+                <select th:field="*{product.id}" class="form-select">
+                    <option value="" disabled selected>Select pet</option>
+                    <option th:each="pet : ${pets}"
+                            th:value="${pet.id}"
+                            th:text="${pet.name}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Quantity</label>
+                <input type="number" th:field="*{quantity}" class="form-control" min="1" />
+            </div>
+
+            <button type="submit" class="btn btn-success">Save</button>
+            <a th:href="@{/admin/cart}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
