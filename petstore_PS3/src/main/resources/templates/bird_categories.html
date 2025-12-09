@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title>Bird Categories</title>
+</head>
+
+<body>
+
+<section layout:fragment="content">
+
+    <!-- Bird Card -->
+    <div class="container ">
+        <div class="row">
+            
+            <div class="col-sm-4" th:each="p :${pets}">
+                <a th:href="@{/pet-details/{id}(id=${p.id})}" style="text-decoration: none;">
+                    <div class="card dog_categories_card dog_card" style="width: 18rem; height:20rem">
+                        <img class="card-img-top" th:src="@{'/images/' + ${p.id}}" alt="Beagle">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${p.name}">Beagle</h5>
+                            <div class="text-center">
+                                <h5 class="font-weight-bold text-dark">
+                                    <i class="fa-solid fa-indian-rupee-sign"></i><span th:text="${p.discountedPrice}"></span>
+                                    <small class="fw-light rupee"><span th:text="${p.sellingPrice}"></span></small>
+                                    <small class="text-danger">(72% off)</small>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Bird Card -->
+
+</section>
+</body>
+</html>

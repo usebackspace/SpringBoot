@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title>Checkout</title>
+</head>
+
+<body>
+
+<section layout:fragment="content">
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 mt-5 ml-5">
+            <div class="container">
+
+                <!-- Order Summary -->
+                <div class="row">
+                    <div class="col-md-12 mt-5">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="text-center"><strong>Order Summary</strong></h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Pet Name</th>
+                                                <th class="text-center">Pet Price</th>
+                                                <th class="text-center">Quantity</th>
+                                                <th class="text-right">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="item : ${cartItems}">
+                                                <td th:text="${item.pet.name}">Pet Name</td>
+                                                <td class="text-center" th:text="'₹' + ${item.pet.discountedPrice}">₹0</td>
+                                                <td class="text-center" th:text="${item.quantity}">1</td>
+                                                <td class="text-right" th:text="'₹' + ${item.pet.discountedPrice * item.quantity}">₹0</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="text-center"><strong>Subtotal</strong></td>
+                                                <td class="text-right" th:text="'₹' + ${subtotal}">₹0</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="text-center"><strong>Shipping</strong></td>
+                                                <td class="text-right">₹2000</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fa fa-barcode iconbig"></i></td>
+                                                <td></td>
+                                                <td class="text-center"><strong>Total</strong></td>
+                                                <td class="text-right" th:text="'₹' + ${finalPrice}">₹0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div th:if="${#lists.isEmpty(addresses)}" class="col-12 mb-3">
+                    <a th:href="@{/address/add}" class="btn btn-primary">Add Address</a>
+                </div>
+                <!-- Address Selection -->
+                <div class="row mt-4">
+                    <form th:action="@{/payment}" method="post">
+                        <div class="col-sm-4 mt-3" th:each="addr : ${addresses}">
+                            <label class="address-label">
+                                <div class="card address-card shadow-sm mt-4">
+                                    <div class="card-body profile-form">
+                                        <h3 class="mb-3">
+                                            <!-- <input type="radio" name="selectedAddress" th:value="${addr.id}" th:checked="${addr.isDefault}"> -->
+                                            <span class="address-name text-light" th:text="${addr.name}">Address Name</span>
+                                        </h3>
+                                        <p class="address-detail">Area: <span th:text="${addr.area}">123 Street</span></p>
+                                        <p class="address-detail">City: <span th:text="${addr.city}">City</span></p>
+                                        <p class="address-detail">State: <span th:text="${addr.state}">State</span></p>
+                                        <p class="address-detail">Pincode: <span th:text="${addr.pincode}">000000</span></p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <!-- Checkout Buttons -->
+                        <div class="checkout-button mt-5 d-flex justify-content-between">
+                            <div class="checkout-back">
+                                <a th:href="@{/cart/view}">
+                                    <input type="button" class="btn btn-warning back-to-cart-button proceed-to-payment" value="Back to Cart">
+                                </a>
+                            </div>
+                            <div class="checkout-process">
+                                <button type="submit" class="btn btn-warning proceed-to-payment">Proceed to Payment</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+
+</body>
+</html>

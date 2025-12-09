@@ -1,0 +1,31 @@
+In this project:
+
+1. We will add some HTML validation in registration form 
+    username = required  minlength="3" maxlength="30" pattern="^[A-Za-z][A-Za-z0-9]*$"
+    Password = required minlength="5"
+
+| Pattern        | Meaning                                        |
+| -------------- | ---------------------------------------------- |
+| ^[A-Za-z]    | Password must start with a letter              |
+| [A-Za-z0-9]* | Remaining characters may be letters or numbers |
+| $            | End of string                                  |
+
+2. we change the field name of  private Pet product to  private Pet pet in Cart model just for convience
+
+3. We resolve the error of view_order.html 
+<td th:text="${order.address.name}"></td>    // previously order.address.fullname
+<td th:text="${order.address.city}"></td>   //  previously order.address.fulladdress
+
+4. we added below form in AddToCart Button
+ <form th:action="@{/cart/add}" method="post">
+    <input type="hidden" th:name="petId" th:value="${p.id}" />
+    <button type="submit" class="btn btn-info my-2 mr-2">Add to Cart</button>
+</form>
+
+5.We created UserCartController.java and view_cart.html
+
+6. We hav created checkout.html page when we click on Proceed to pay. And also created CheckoutController.java
+
+7.We created UserAddressController.java address.html page
+  Inside address.html we have created a button Add Address.
+  we have also created add_address.html to add the address

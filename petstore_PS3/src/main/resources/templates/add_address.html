@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{base}">
+
+<head>
+    <title>Add Address</title>
+</head>
+
+<body>
+
+    <section layout:fragment="content">
+
+        <div class="container-fluid profile view-cart view-cart-right-side-bar">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-2 d-none d-md-block sidebar">
+                    <nav>
+                        <div class="sidebar-sticky">
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" th:href="@{/profile}">Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link" th:href="@{/changepassword}">Change
+                                        Password</a></li>
+                                <li class="nav-item"><a class="nav-link" th:href="@{/order}">Orders</a></li>
+                                <li class="nav-item"><a class="nav-link" th:href="@{/cart/view}">Cart</a></li>
+                                <li class="nav-item"><a class="nav-link active" th:href="@{/address}">Address</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-md-8">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 mt-4">
+                                <div class="container profile-form">
+                                    <div class="reg">
+                                        <h3 class="text-danger">Add Address</h3>
+                                    </div>
+
+                                    <form th:action="@{/address/add}" th:object="${address}" method="post">
+
+                                        <div class="form-group mr-4 ml-4">
+                                            <label for="name">Name</label>
+                                            <input type="text" th:field="*{name}" class="form-control"
+                                                placeholder="Enter Name" pattern="[A-Za-z\s]+"
+                                                title="Name should only contain letters" required />
+                                            <div class="text-danger" th:errors="*{name}"></div>
+                                        </div>
+
+                                        <div class="form-group mr-4 ml-4">
+                                            <label for="area">Area</label>
+                                            <input type="text" th:field="*{area}" class="form-control"
+                                                placeholder="Enter Area" required />
+                                            <div class="text-danger" th:errors="*{area}"></div>
+                                        </div>
+
+                                        <div class="form-group mr-4 ml-4">
+                                            <label for="city">City</label>
+                                            <input type="text" th:field="*{city}" class="form-control"
+                                                placeholder="Enter City" required />
+                                            <div class="text-danger" th:errors="*{city}"></div>
+                                        </div>
+
+                                        <div class="form-group mr-4 ml-4">
+                                            <label for="state">State</label>
+                                            <select th:field="*{state}" class="form-control" required>
+                                                <option value="" disabled selected>Select State</option>
+                                                <option th:each="s : ${states}" th:value="${s}" th:text="${s}"></option>
+                                            </select>
+                                            <div class="text-danger" th:errors="*{state}"></div>
+                                        </div>
+
+                                        <div class="form-group mr-4 ml-4">
+                                            <label for="pincode">Pincode</label>
+                                            <input type="text" th:field="*{pincode}" class="form-control"
+                                                placeholder="Enter 6-digit Pincode" pattern="\d{6}" maxlength="6"
+                                                title="Pincode must be exactly 6 digits" required />
+                                            <div class="text-danger" th:errors="*{pincode}"></div>
+                                        </div>
+
+                                        <div class="text-center mt-3">
+                                            <button type="submit" class="btn btn-success">Save Address</button>
+                                            <a th:href="@{/address}" class="btn btn-secondary">Cancel</a>
+                                        </div>
+
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end col-md-8 -->
+            </div> <!-- end row -->
+        </div> <!-- end container-fluid -->
+
+    </section>
+
+</body>
+
+</html>
