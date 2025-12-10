@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{base}">
+
+<head>
+    <title>Payment</title>
+</head>
+
+<body>
+    
+    <section layout:fragment="content">
+
+<div class="payment-container">
+    <div class="payment-wrapper">
+
+        <h3 class="text-center text-primary">Complete Your Payment</h3>
+
+        <div class="payment-options">
+
+            <!-- PayPal Button -->
+            <div class="payment-option" th:if="${paypalButton != null}">
+                <div th:utext="${paypalButton}"></div>
+            </div>
+
+            <!-- COD Payment -->
+            <div class="payment-option">
+                <form th:action="@{/order/cod}" method="post">
+                    <input type="hidden" name="userId" th:value="${userId}">
+                    <input type="hidden" name="addressId" th:value="${selectedAddress.id}">
+                    <button class="payment-button credit-card-btn">Cash On Delivery</button>
+                </form>
+            </div>
+
+            <!-- Credit Card -->
+            <div class="payment-option">
+                <button class="payment-button credit-card-btn">Pay with Credit/Debit Card</button>
+            </div>
+
+            <!-- Google Pay -->
+            <div class="payment-option">
+                <button class="payment-button google-pay-btn">Pay with Google Pay</button>
+            </div>
+
+            <!-- Apple Pay -->
+            <div class="payment-option">
+                <button class="payment-button apple-pay-btn">Pay with Apple Pay</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+</section>
+</body>
+</html>

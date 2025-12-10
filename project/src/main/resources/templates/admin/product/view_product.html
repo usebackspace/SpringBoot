@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/admin}">
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container-fluid">
+        <div class="head mt-3">
+            <h1>Product Management</h1>
+            <a th:href="@{/admin/products/add}" class="btn btn-primary mb-3">Add New Product</a>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Selling Price</th>
+                        <th>Discounted Price</th>
+                        <th>Image</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="product : ${products}">
+                        <td th:text="${product.id}"></td>
+                        <td th:text="${product.name}"></td>
+                        <td th:text="${product.category}"></td>
+                        <td th:text="${product.sellingPrice}"></td>
+                        <td th:text="${product.discountedPrice}"></td>
+
+                        <td>
+                            <div th:if="${product.productImage != null}">
+                                <img th:src="@{'/admin/products/images/' + ${product.id}}" alt="product" width="70" height="70">
+                            </div>
+                            <div th:if="${product.productImage == null}">No Image</div>
+                        </td>
+
+                        <td>
+                            <a th:href="@{/admin/products/update/{id}(id=${product.id})}" class="btn btn-warning btn-sm">Edit</a>
+                            <a th:href="@{/admin/products/delete/{id}(id=${product.id})}" class="btn btn-danger btn-sm"
+                               onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

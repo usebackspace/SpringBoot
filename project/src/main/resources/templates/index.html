@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title>Home</title>
+</head>
+
+<body>
+    <section layout:fragment="content">
+
+        <!-- Carousel -->
+        <div th:replace="fragments/carousel :: carousel"></div>
+
+        <!-- Image Cards -->
+        <div th:replace="fragments/image_card :: image_card"></div>
+
+        <!-- Featurette Section -->
+        <div th:replace="fragments/featurette :: featurette"></div>
+
+    </section>
+</body>
+</html>

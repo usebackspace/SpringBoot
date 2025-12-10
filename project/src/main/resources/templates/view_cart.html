@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title>Shopping Cart</title>
+</head>
+
+<body>
+
+<section layout:fragment="content">
+
+    <div class="container-fluid profile view-cart view-cart-right-side-bar">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-md-2 d-none d-md-block sidebar mt-5">
+                <nav>
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" th:href="@{/profile}">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/order}">
+                                    Orders
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/cart/view}">
+                                    Cart
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" th:href="@{/address}">
+                                    Address
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Main Cart Section -->
+            <div class="col-md-8">
+                <div class="container h-100 py-5">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-10">
+
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h3 class="fw-normal mb-0 text-black text-danger">Shopping Cart</h3>
+                            </div>
+
+                            <!-- Cart Items Loop -->
+                            <div th:each="item : ${cartItems}">
+                                <div class="card rounded-3 mb-4">
+                                    <div class="card-body p-4">
+                                        <div class="row d-flex justify-content-between align-items-center">
+
+                                            <!-- Product Image -->
+                                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                                <img th:src="@{/images/{id}(id=${item.product.id})}" 
+                                                     class="img-fluid rounded-3" 
+                                                     alt="Product Image">
+                                            </div>
+
+                                            <!-- Product Name -->
+                                            <p class="lead fw-normal text-danger mb-2" th:text="${item.product != null} ? ${item.product.name} : 'Product removed'">Product Name</p>
+
+                                            <!-- Quantity Controls -->
+                                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                                <a th:href="@{/cart/deleteQuantity/{id}(id=${item.id})}" class="btn btn-link px-2">
+                                                    <i class="fas fa-minus"></i>
+                                                </a>
+                                                <div class="form-control form-control-sm text-center" th:text="${item.quantity}">1</div>
+                                                <a th:href="@{/cart/addQuantity/{id}(id=${item.id})}" class="btn btn-link px-2">
+                                                    <i class="fas fa-plus"></i>
+                                                </a>
+                                            </div>
+
+                                            <!-- Price -->
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                                <h5 class="mb-0 text-danger" th:text="'₹' + ${item.product.discountedPrice * item.quantity}">₹0</h5>
+                                            </div>
+
+                                            <!-- Delete Button -->
+                                            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                    <a th:href="@{/cart/delete/{id}(id=${item.id})}"><button type="submit" class="btn btn-danger">
+                                                        <i class="fa-solid fa-trash-can"></i>
+                                                    </button></a>  
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Checkout Button -->
+                            <div th:if="${#lists.isEmpty(cartItems) == false}">
+                                <a th:href="@{/checkout}">
+                                    <button type="button" class="btn btn-success btn-block btn-lg proceed-to-pay">Proceed to Pay</button>
+                                </a>
+                            </div>
+
+                            <!-- Empty Cart -->
+                            <div th:if="${#lists.isEmpty(cartItems)}">
+                                <figure>
+                                    <figcaption class="figcaption"><h2>Your cart is empty</h2></figcaption>
+                                    <img th:src="@{/images/empty_cart.png}" alt="empty_cart" class="empty-cart">
+                                </figure>
+                                <a th:href="@{/}">
+                                    <button type="button" class="btn btn-success btn-block btn-lg proceed-to-pay">Continue Shopping</button>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+</body>
+</html>

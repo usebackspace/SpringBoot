@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title>Address</title>
+</head>
+<body>
+
+<section layout:fragment="content">
+
+<div class="container-fluid profile view-cart view-cart-right-side-bar mt-5">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 d-none d-md-block sidebar">
+            <nav>
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link" th:href="@{/profile}">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/order}">Orders</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/cart/view}">Cart</a></li>
+                        <li class="nav-item"><a class="nav-link active" th:href="@{/address}">Address</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-8">
+
+            <!-- Add Address Button -->
+            <div class="col-12 mb-3">
+                <a th:href="@{/address/add}" class="btn btn-warning">Add Address</a>
+            </div>
+
+            <!-- Address Cards -->
+            <div class="row">
+                <div class="col-sm-6 text-black" th:each="add : ${address}">
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250 mt-4 ml-4">
+                        <div class="card-body d-flex flex-column align-items-start view-cart view-cart-right-side-bar">
+                            <h3 class="mb-0 text-black">
+                                <span class="text-dark">Name: </span>
+                                <span th:text="${add.name}">Name</span>
+                            </h3>
+                            <p class="card-text mb-auto text-black">
+                                <span class="address-detail text-dark">Area: </span>
+                                <span th:text="${add.area}">Area</span>
+                            </p>
+                            <p class="card-text mb-auto text-black">
+                                <span class="address-detail text-dark">City: </span>
+                                <span th:text="${add.city}">City</span>
+                            </p>
+                            <p class="card-text mb-auto text-black">
+                                <span class="address-detail text-dark">State: </span>
+                                <span th:text="${add.state}">State</span>
+                            </p>
+                            <p class="card-text mb-auto text-black">
+                                <span class="address-detail text-dark">Pincode: </span>
+                                <span th:text="${add.pincode}">000000</span>
+                            </p>
+
+                            <!-- Delete Address Button -->
+                            <form th:action="@{/address/delete/{id}(id=${add.id})}" method="post">
+                                <input type="submit" class="btn btn-danger btn-sm mt-2" value="Delete Address">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</section>
+</body>
+</html>
