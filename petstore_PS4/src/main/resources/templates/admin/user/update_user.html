@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/admin}">
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container mt-4">
+        <div class="head">
+            <h1>Update User</h1>
+        </div>
+
+        <!-- Form to update an existing user -->
+        <form th:action="@{/admin/users/update}" method="post" th:object="${user}">
+            <!-- Hidden input for the user's ID -->
+            <input type="hidden" th:field="*{id}">
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" th:field="*{username}" placeholder="Enter username" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Enter password" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select id="role" class="form-control" th:field="*{role}" required>
+                    <option value="USER" th:selected="${user.role == 'USER'}">USER</option>
+                    <option value="ADMIN" th:selected="${user.role == 'ADMIN'}">ADMIN</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update User</button>
+            <a href="#" th:href="@{/admin/users}" class="btn btn-secondary ms-3">Cancel</a>
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

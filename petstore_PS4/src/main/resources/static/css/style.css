@@ -1,0 +1,272 @@
+body {
+  background-color: rgb(225, 226, 143);
+  /* background-image: url('sunbird.jpg'); */
+  /* background-size: 100%; */
+
+}
+
+
+/* Custom CSS for carousel images */
+#carouselExampleFade img {
+  max-height: 550px;
+  /* Set the maximum height */
+  width: auto;
+  /* Ensure the width adjusts proportionally */
+}
+
+
+/* search on google - bootstrap card limit image size  */
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.card-img-href {
+  text-decoration: none;
+  background-color: rgb(245, 229, 10);
+}
+
+.custom-search-bar {
+  width: 300px;
+  /* Adjust the width as needed */
+}
+
+.dropdown-menu {
+  background-color: rgb(245, 229, 10);
+  border-radius: 10px;
+}
+
+.mb-2 {
+  border-radius: 30px;
+  margin-left: 50px;
+}
+
+.mb-3 {
+  margin-left: 60px;
+
+}
+
+.about {
+  margin-top: 100px;
+}
+
+.dog_categories_card {
+  margin-top: 70px;
+  border-radius: 20px;
+
+}
+
+.card-title {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 24px;
+}
+
+.card-text {
+  text-align: center;
+}
+
+.dog_card {
+  background-color: rgb(245, 229, 10);
+}
+
+.petdetails {
+  margin-top: 100px;
+}
+
+.rupee {
+  text-decoration: line-through;
+}
+
+/* ======== Login CSS STart ======= */
+/* Match petstore yellow theme + rounded shapes */
+.login-wrapper {
+  max-width: 420px;
+  margin: 100px auto;
+  /* centered */
+}
+
+.login-card {
+  background-color: rgb(245, 229, 10);
+  /* your theme */
+  padding: 30px;
+  border-radius: 25px;
+  /* rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.login-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 28px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.login-card .form-control {
+  border-radius: 20px;
+  padding: 12px;
+}
+
+.login-card button {
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+.login-card button:hover {
+  background-color: #333;
+}
+
+.register-link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.register-link a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.alert {
+  border-radius: 15px;
+}
+
+/* ======== Login CSS END ======= */
+
+/*============  Register Css Start =====================*/
+.register-wrapper {
+  max-width: 420px;
+  margin: 100px auto;
+}
+
+.register-card {
+  background-color: rgb(245, 229, 10);
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.register-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 28px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.register-card .form-control {
+  border-radius: 20px;
+  padding: 12px;
+}
+
+.register-card button {
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+  width: 100%;
+  transition: 0.3s ease;
+}
+
+.register-card button:hover {
+  background-color: #333;
+}
+
+.login-link {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.login-link a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.alert {
+  border-radius: 15px;
+}
+
+/*============  Register Css END =====================*/
+
+
+/* ======== Payment Page Css ========== */
+
+/* Main container */
+.payment-container {
+    margin: 70px auto;
+    max-width: 600px;
+}
+
+/* Wrapper box */
+.payment-wrapper {
+    background-color: rgb(245, 229, 10); /* yellow theme */
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+}
+
+/* Payment options layout */
+.payment-options {
+    margin-top: 30px;
+}
+
+.payment-option {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.payment-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* Specific buttons */
+.credit-card-btn {
+    background-color: #007bff; /* blue */
+}
+
+.credit-card-btn:hover {
+    background-color: #0062cc;
+}
+
+.google-pay-btn {
+    background-color: #0f9d58; /* Google Green */
+}
+
+.google-pay-btn:hover {
+    background-color: #0d864c;
+}
+
+.apple-pay-btn {
+    background-color: #000; 
+}
+
+.apple-pay-btn:hover {
+    background-color: #333;
+}
+
+/* COD button inherits credit-card-btn class, so styling it separately */
+form .payment-button {
+    background-color: black !important;
+}
+
+form .payment-button:hover {
+    background-color: #333 !important;
+}
+
+/* ======== Payment Page Css  END========== */

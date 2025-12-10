@@ -1,0 +1,9 @@
+In this project:
+
+Checkout:  View cart → select address → proceed.
+
+Payment: Choose payment method → send necessary info.
+
+Order Processing: Create order → clear cart → show success.
+
+Success Page: Confirm and navigate further.

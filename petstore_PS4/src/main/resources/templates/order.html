@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+<head>
+    <title>Order Details</title>
+    <style>
+        .card {
+            margin: 2vh auto;
+            max-width: 600px;
+            padding: 4vh 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.19);
+            border-top: 3px solid rgb(252,103,49);
+            border-bottom: 3px solid rgb(252,103,49);
+        }
+        @media (max-width: 768px) {
+            .card { width: 90%; }
+        }
+        .title {
+            color: rgb(252,103,49);
+            font-weight: 600;
+            margin-bottom: 2vh;
+            padding: 0 8%;
+            font-size: 1.6rem;
+        }
+        .info, .pricing, .total, .tracking { padding: 5% 8%; }
+        #heading { color: grey; line-height: 6vh; font-weight: 500; }
+        #details { font-weight: 400; }
+        .pricing { background-color: #ddd3; line-height: 2.5; }
+        .total { color: rgb(252,103,49); font-weight: bold; }
+        #progressbar {
+            margin: 3vh 0;
+            padding-left: 0;
+            overflow: hidden;
+            color: rgb(252,103,49);
+        }
+        #progressbar li {
+            list-style: none;
+            width: 33.33%;
+            float: left;
+            position: relative;
+            font-size: x-small;
+            font-weight: 400;
+            color: rgb(160,159,159);
+        }
+        #progressbar li:before {
+            content: '';
+            display: block;
+            height: 12px;
+            width: 12px;
+            margin: 0 auto 1vh;
+            background: #ddd;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        #progressbar li:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 1px;
+            height: 2px;
+            background: #ddd;
+            z-index: 1;
+        }
+        #progressbar li.active { color: black; }
+        #progressbar li.active:before,
+        #progressbar li.active:after { background: rgb(252,103,49); }
+    </style>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container-fluid profile view-cart view-cart-right-side-bar">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <aside class="col-md-2 d-none d-md-block sidebar mt-5">
+                <nav>
+                    <ul class="nav flex-column sidebar-sticky">
+                        <li class="nav-item"><a class="nav-link" th:href="@{/profile}">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/order}">Orders</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/viewcart}">Cart</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/address}">Address</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Orders Section -->
+            <main class="col-md-8 mt-5">
+                <div th:each="o : ${orders}" class="order">
+                    <div class="card">
+                        <div class="title">Purchase Receipt</div>
+
+                        <!-- Order Info -->
+                        <div class="info row">
+                            <div class="col-7">
+                                <span id="heading">Date</span><br>
+                                <span id="details" th:text="${o.orderAt}"></span>
+                            </div>
+                        </div>
+
+                        <!-- Pricing -->
+                        <div class="pricing">
+                            <div class="row">
+                                <div class="col-9" th:text="${o.pet.name}">Pet Name</div>
+                                <div class="col-3">₹<span th:text="${o.pet.discountedPrice}">0</span></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-9">Shipping</div>
+                                <div class="col-3">₹ 2000</div>
+                            </div>
+                        </div>
+
+                        <!-- Total -->
+                        <div class="total row">
+                            <div class="col-9"><h4>Total Price</h4></div>
+                            <div class="col-3 text-dark">
+                                <big th:text="${o.pet.discountedPrice + 2000}">0</big>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+</section>
+</body>
+</html>

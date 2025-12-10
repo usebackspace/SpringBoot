@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/admin}">
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="container mt-4">
+        <h1>Update Order</h1>
+
+        <form th:action="@{/admin/orders/update}" method="post" th:object="${order}">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="mb-3">
+                <label class="form-label">Pet</label>
+                <select class="form-select" th:field="*{pet.id}">
+                    <option th:each="p : ${pets}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Address</label>
+                <select class="form-select" th:field="*{address.id}">
+                    <option th:each="a : ${addresses}" th:value="${a.id}" th:text="${a.name}"></option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Quantity</label>
+                <input type="number" class="form-control" th:field="*{quantity}">
+            </div>
+            <!-- <div class="mb-3">
+                <label class="form-label">Status</label>
+                <select class="form-select" th:field="*{status}">
+                    <option th:each="s : ${T(com.example.petstore.model.enums.OrderStatus).values()}"
+                            th:value="${s}" th:text="${s}"></option>
+                </select>
+            </div> -->
+
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a th:href="@{/admin/orders}" class="btn btn-secondary ms-3">Cancel</a>
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
